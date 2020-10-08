@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="select">
+
+    <select #city (change)="dataChanged($event.target.value)" >
+        <option selected>Select City...</option>
+        <option *ngFor="let city of cities"  >{{city.name}}</option>
+    </select>
+
+    <button  (click)="getWeather()">Update</button>
+</div>
+
+<div class="content" *ngIf="isDataAvailable">
+    <span class="contrent-header">{{selectedCity.name}}</span>
+
+   <img src="https://mocah.org/uploads/posts/124344-miui-8-weather-background-minimal-hd.png">
+
+   <div class="description">
+    <img id="wicon" src="{{categoryIcon}}" alt="Weather icon">
+      <div class="temp">{{temp}}</div>
+      <!-- <span style='font-size:100px;'>&#8451;</span> -->
+
+      <div class="category">{{category}}</div>
+   </div>
+
+   <div class="footer">
+       <span class="humidity">Humidity: {{humidity}}</span>
+       <span class="pressure">Air Pressure: {{pressure}}</span>
+   </div>
+</div>
